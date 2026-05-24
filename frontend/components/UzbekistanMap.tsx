@@ -128,9 +128,9 @@ export default function UzbekistanMap({ dealers, lang, selectedId, onSelect }: U
   // Update marker styles when selection changes
   useEffect(() => {
     markersRef.current.forEach((marker, id) => {
-      const el = marker.getElement();
+      const el = marker.getElement() as HTMLElement | null;
       if (!el) return;
-      const inner = el.querySelector<HTMLElement>('[data-marker-inner]');
+      const inner = el.querySelector('[data-marker-inner]') as HTMLElement | null;
       if (!inner) return;
       if (id === selectedId) {
         inner.classList.add('marker-active');
