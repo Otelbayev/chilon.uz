@@ -15,7 +15,7 @@ export default function LangSwitcher({ compact = false }: { compact?: boolean })
 
   useEffect(() => {
     const close = (e: MouseEvent) => {
-      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+      if (ref.current && ref.current.contains!(e.target as Node)) setOpen(false);
     };
     document.addEventListener('mousedown', close);
     return () => document.removeEventListener('mousedown', close);
@@ -24,7 +24,7 @@ export default function LangSwitcher({ compact = false }: { compact?: boolean })
   return (
     <div ref={ref} className="relative">
       <button
-        onClick={() => setOpen((s) => !s)}
+        onClick={() => setOpen((s) => s!)}
         className={`inline-flex items-center gap-1.5 rounded-md font-semibold text-[--color-ink-700] hover:text-[--color-brand-700] transition-colors ${
           compact ? 'text-xs px-2 py-1' : 'text-sm px-2.5 py-1.5'
         }`}

@@ -3,108 +3,112 @@
 import Link from 'next/link';
 import { useLang } from '@/lib/i18n';
 import { NEWS, productImage } from '@/lib/data';
-import { Reveal, SplitReveal } from '@/components/Reveal';
-import Tilt3D from '@/components/Tilt3D';
+import { Reveal } from '@/components/Reveal';
 
 export default function NewsPage() {
-  const { t, pick } = useLang();
+  const { t, pick, lang } = useLang();
   const items = NEWS;
+  const [feature, ...rest] = items;
+
+  const fmt = (d: string) =>
+    new Date(d).toLocaleDateString(lang === 'uz' ? 'uz-UZ' : lang, {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    });
 
   return (
-    <div className="relative pt-28 lg:pt-36 pb-24 noise overflow-hidden">
-      <div className="absolute inset-x-0 top-0 h-[40rem] mesh-bg pointer-events-none" />
-      <div className="absolute inset-x-0 top-0 h-[40rem] bg-grid bg-grid-fade pointer-events-none" />
+    <div>
+      {/* Hero */}
+      <section className="bg-[--color-cream] border-b border-[--color-ink-100]">
+        <div className="wrap py-12 lg:py-16">
+          <Reveal>
+            <nav className="text-xs text-[--color-ink-500] mb-4 flex items-center gap-2">
+              <Link href="/" className="hover:text-[--color-brand-700]">{t('nav.home')}</Link>
+              <span>/</span>
+              <span className="text-[--color-ink-800]">{t('nav.news')}</span>
+            </nav>
+          </Reveal>
+          <Reveal delay={0.05}>
+            <span className="eyebrow">{t('sec.news.eyebrow')}</span>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <h1 className="display mt-3 text-4xl sm:text-5xl lg:text-6xl">{t('sec.news.title')}</h1>
+          </Reveal>
+        </div>
+      </section>
 
-      <div className="relative wrap">
-        <Reveal>
-          <div className="flex items-center gap-3 sec-num">
-            <span>/ news</span>
-            <span className="block h-px w-12 bg-[--color-line-2]" />
-            <span className="text-[--color-amber-400]">{items.length} articles</span>
-          </div>
-        </Reveal>
-
-        <h1 className="display mt-5 text-[clamp(2.75rem,9vw,10rem)] leading-[0.88]">
-          <SplitReveal text={t('nav.news')} />
-        </h1>
-
-        {/* Feature card */}
-        {items[0] && (
-          <div className="mt-12">
+      <section className="sec">
+        <div className="wrap">
+          {/* Featured */}
+          {feature && (
             <Reveal>
-              <Tilt3D intensity={4}>
-                <Link
-                  href={`/news/${items[0].slug}`}
-                  className="bento group block relative aspect-[16/10] sm:aspect-[16/9] overflow-hidden"
-                >
+              <Link
+                href={`/news/${feature.slug}`}
+                className="card card-hover grid grid-cols-1 lg:grid-cols-12 overflow-hidden mb-10 lg:mb-14"
+              >
+                <div className="lg:col-span-7 aspect-[16/10] lg:aspect-auto bg-gradient-to-br from-[--color-paper] to-[--color-cream] grid place-items-center overflow-hidden">
                   <img
-                    src={productImage({ id: items[0].slug }, 0)}
-                    alt={pick(items[0].title)}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    src={productImage({ id: feature.slug }, 0)}
+                    alt={pick(feature.title)}
+                    className="max-h-[80%] max-w-[65%] object-contain drop-shadow-md transition-transform duration-500 hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[--color-bg-0] via-[--color-bg-0]/85 to-transparent" />
-                  <div className="absolute top-5 left-5 flex items-center gap-2 rounded-full bg-[--color-bg-0]/90 backdrop-blur border border-[--color-line] px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[--color-fg-1]">
-                    <span className="size-1.5 rounded-full bg-[--color-amber-500] animate-pulse" />
-                    {new Date(items[0].date).toLocaleDateString()} · featured
+                </div>
+                <div className="lg:col-span-5 p-6 sm:p-10 lg:p-12 flex flex-col justify-center">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="tag tag-amber">★ Asosiy</span>
+                    <span className="text-xs text-[--color-ink-500]">{fmt(feature.date)}</span>
                   </div>
-                  <div className="absolute inset-x-0 bottom-0 flex flex-col p-8 sm:p-12 lg:p-16">
-                    <h2 className="display text-3xl sm:text-5xl lg:text-6xl text-[--color-fg-0] max-w-3xl leading-[0.95]">
-                      {pick(items[0].title)}
-                    </h2>
-                    {items[0].excerpt && (
-                      <p className="mt-4 max-w-xl text-sm sm:text-base text-[--color-fg-2]">
-                        {pick(items[0].excerpt)}
-                      </p>
-                    )}
-                    <span className="arrow-link mt-6">
-                      {t('news.read')} <Arrow />
-                    </span>
-                  </div>
-                </Link>
-              </Tilt3D>
+                  <h2 className="display text-2xl sm:text-3xl lg:text-4xl text-[--color-ink-900] leading-tight">
+                    {pick(feature.title)}
+                  </h2>
+                  {feature.excerpt && (
+                    <p className="mt-4 text-base text-[--color-ink-600] line-clamp-3">
+                      {pick(feature.excerpt)}
+                    </p>
+                  )}
+                  <span className="arrow-link mt-6">
+                    {t('news.read')}
+                    <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7.5 2L11 6.5 7.5 11" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </span>
+                </div>
+              </Link>
             </Reveal>
-          </div>
-        )}
+          )}
 
-        {/* Rest grid */}
-        {items.length > 1 && (
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-            {items.slice(1).map((n, i) => (
-              <Reveal key={n.id} delay={i * 0.06}>
-                <Tilt3D intensity={5}>
-                  <Link href={`/news/${n.slug}`} className="bento block aspect-[4/5] overflow-hidden relative group">
-                    <img
-                      src={productImage({ id: n.slug }, i + 1)}
-                      alt={pick(n.title)}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[--color-bg-0] via-[--color-bg-0]/85 via-50% to-transparent" />
-                    <div className="absolute top-5 left-5 inline-flex items-center gap-2 rounded-full bg-[--color-bg-0]/90 backdrop-blur border border-[--color-line] px-3 py-1.5 font-mono text-[10px] uppercase tracking-widest text-[--color-fg-1]">
-                      {new Date(n.date).toLocaleDateString()}
+          {/* Grid */}
+          {rest.length > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+              {rest.map((n, i) => (
+                <Reveal key={n.id} delay={i * 0.05}>
+                  <Link
+                    href={`/news/${n.slug}`}
+                    className="card card-hover overflow-hidden h-full flex flex-col"
+                  >
+                    <div className="aspect-[16/10] bg-gradient-to-br from-[--color-paper] to-[--color-cream] grid place-items-center overflow-hidden">
+                      <img
+                        src={productImage({ id: n.slug }, i + 1)}
+                        alt={pick(n.title)}
+                        className="max-h-[75%] max-w-[68%] object-contain drop-shadow-md transition-transform duration-500 hover:scale-105"
+                      />
                     </div>
-                    <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7">
-                      <h3 className="font-display font-semibold text-lg sm:text-2xl text-[--color-fg-0] leading-tight line-clamp-3">
+                    <div className="p-5 sm:p-6 flex-1 flex flex-col">
+                      <div className="text-xs text-[--color-ink-500] mb-2">{fmt(n.date)}</div>
+                      <h3 className="font-display font-semibold text-base sm:text-lg text-[--color-ink-900] leading-snug line-clamp-3 flex-1">
                         {pick(n.title)}
                       </h3>
-                      <span className="arrow-link mt-4 text-xs">
-                        {t('news.read')} <Arrow />
-                      </span>
+                      <div className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-[--color-brand-700]">
+                        {t('news.read')}
+                        <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2 5.5h7M6.5 2L9 5.5 6.5 9" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                      </div>
                     </div>
                   </Link>
-                </Tilt3D>
-              </Reveal>
-            ))}
-          </div>
-        )}
-      </div>
+                </Reveal>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
     </div>
-  );
-}
-
-function Arrow() {
-  return (
-    <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
-      <path d="M2 6.5h9M7.5 2L11 6.5 7.5 11" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-    </svg>
   );
 }

@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev -p 3100",
     "build": "next build",
-    "start": "next start -p 3100",
-    "lint": "next lint"
+    "start": "next start"
   },
   "dependencies": {
     "gsap": "3.15.0",
@@ -24,5 +23,8 @@
     "postcss": "8.5.0",
     "tailwindcss": "4.3.0",
     "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }
