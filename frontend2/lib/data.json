@@ -1,0 +1,734 @@
+{
+  "site": {
+    "name": "Chilon Lubricants",
+    "fullName": "ООО Chilon Lubricants",
+    "tagline": {
+      "ru": "CHILON — это качественный национальный продукт",
+      "uz": "CHILON — sifatli milliy mahsulot"
+    },
+    "logo": "/assets/logo.svg",
+    "favicon": "/assets/favicon.ico",
+    "url": "https://chilon.uz",
+    "copyright": "© 2018-2026 Chilon Lubricants. Все права защищены.",
+    "developer": "aibro.uz",
+    "languages": [
+      { "code": "ru", "label": "RU", "name": "Русский", "default": true },
+      { "code": "uz", "label": "UZ", "name": "O'zbekcha", "default": false }
+    ],
+    "theme": {
+      "primary": "#0a4a8f",
+      "secondary": "#e30613",
+      "accent": "#f5a623",
+      "dark": "#1a1a1a",
+      "light": "#ffffff",
+      "muted": "#6b7280"
+    }
+  },
+
+  "navigation": {
+    "main": [
+      { "id": "home",     "slug": "/",          "label": { "ru": "Главная",     "uz": "Bosh sahifa" } },
+      { "id": "about",    "slug": "/about",     "label": { "ru": "О компании",  "uz": "Kompaniya haqida" } },
+      { "id": "products", "slug": "/products",  "label": { "ru": "Продукция",   "uz": "Mahsulotlar" } },
+      { "id": "jobs",     "slug": "/jobs",      "label": { "ru": "Работа",      "uz": "Ish" } },
+      { "id": "partners", "slug": "/partners",  "label": { "ru": "Партнеры",    "uz": "Hamkorlar" } },
+      { "id": "news",     "slug": "/news",      "label": { "ru": "Новости",     "uz": "Yangiliklar" } },
+      { "id": "contacts", "slug": "/contacts",  "label": { "ru": "Контакты",    "uz": "Kontaktlar" } }
+    ],
+    "cta": {
+      "label": { "ru": "Заказать звонок", "uz": "Qo'ng'iroqni buyurtma qilish" },
+      "action": "openCallbackModal"
+    }
+  },
+
+  "pages": {
+    "home": {
+      "hero": {
+        "title": {
+          "ru": "Производство и реализация смазочных материалов",
+          "uz": "Moylash materiallarini ishlab chiqarish va sotish"
+        },
+        "subtitle": {
+          "ru": "Первый высокотехнологичный завод по производству смазочных материалов мирового уровня в Узбекистане",
+          "uz": "O'zbekistondagi jahon darajasidagi moylash materiallari ishlab chiqarish bo'yicha birinchi yuqori texnologiyali zavod"
+        },
+        "background": "/assets/hero-bg.jpg",
+        "buttons": [
+          { "label": { "ru": "Каталог продукции", "uz": "Mahsulotlar katalogi" }, "link": "/products", "type": "primary" },
+          { "label": { "ru": "О компании",       "uz": "Kompaniya haqida" },   "link": "/about",    "type": "secondary" }
+        ]
+      },
+      "stats": [
+        { "value": "9000+",  "unit": { "ru": "тонн в год",   "uz": "tonna yiliga" },     "label": { "ru": "Производственная мощность", "uz": "Ishlab chiqarish quvvati" } },
+        { "value": "356+",   "unit": { "ru": "видов",        "uz": "tur" },              "label": { "ru": "Видов смазочных материалов", "uz": "Moylash materiallari turlari" } },
+        { "value": "2013",   "unit": { "ru": "год",          "uz": "yil" },              "label": { "ru": "Год основания",              "uz": "Tashkil etilgan yil" } },
+        { "value": "11",     "unit": { "ru": "категорий",    "uz": "kategoriya" },       "label": { "ru": "Категорий продукции",        "uz": "Mahsulot kategoriyalari" } }
+      ],
+      "aboutPreview": {
+        "title": { "ru": "О компании CHILON", "uz": "CHILON kompaniyasi haqida" },
+        "description": {
+          "ru": "ООО «Chilon Lubricants» — современное предприятие по производству смазочных материалов в Бектемирском районе Ташкента. Завод запущен в I квартале 2013 года в рамках программы импортозамещения Узбекистана.",
+          "uz": "«Chilon Lubricants» MChJ — Toshkent shahri Bektemir tumanida joylashgan zamonaviy moylash materiallari ishlab chiqarish korxonasi. Zavod 2013 yilning I choragida O'zbekistonning import o'rnini bosish dasturi doirasida ishga tushirilgan."
+        },
+        "image": "/assets/about-preview.jpg",
+        "link": "/about"
+      },
+      "callbackSection": {
+        "title":    { "ru": "Бесплатная консультация",                           "uz": "Bepul maslahat" },
+        "subtitle": { "ru": "Оставьте заявку, и наш специалист свяжется с вами", "uz": "Ariza qoldiring, mutaxassisimiz siz bilan bog'lanadi" },
+        "form": {
+          "fields": [
+            { "name": "name",    "type": "text",  "placeholder": { "ru": "Ваше имя",  "uz": "Ismingiz" },     "required": true },
+            { "name": "phone",   "type": "tel",   "placeholder": { "ru": "Телефон",   "uz": "Telefon" },       "required": true },
+            { "name": "message", "type": "textarea", "placeholder": { "ru": "Сообщение", "uz": "Xabar" },     "required": false }
+          ],
+          "submitLabel": { "ru": "Отправить заявку", "uz": "Arizani yuborish" }
+        }
+      }
+    },
+
+    "about": {
+      "title": { "ru": "О компании", "uz": "Kompaniya haqida" },
+      "breadcrumb": [
+        { "label": { "ru": "Главная",    "uz": "Bosh sahifa" },     "link": "/" },
+        { "label": { "ru": "О компании", "uz": "Kompaniya haqida" }, "link": "/about" }
+      ],
+      "sections": [
+        {
+          "id": "overview",
+          "title": { "ru": "Обзор компании", "uz": "Kompaniya sharhi" },
+          "content": {
+            "ru": "ООО «Chilon Lubricants» — современное предприятие по производству смазочных материалов в Бектемирском районе Ташкента. Завод, запущенный в I квартале 2013 года, производит более 40 000 тонн готовой продукции в год и был создан в рамках программы импортозамещения Узбекистана.",
+            "uz": "«Chilon Lubricants» MChJ — Toshkent shahri Bektemir tumanida joylashgan zamonaviy moylash materiallari ishlab chiqarish korxonasi. 2013 yilning I choragida ishga tushirilgan zavod yiliga 40 000 tonnadan ortiq tayyor mahsulot ishlab chiqaradi va O'zbekistonning import o'rnini bosish dasturi doirasida tashkil etilgan."
+          },
+          "image": "/assets/about-1.jpg"
+        },
+        {
+          "id": "production",
+          "title": { "ru": "Производственные возможности", "uz": "Ishlab chiqarish imkoniyatlari" },
+          "content": {
+            "ru": "Компания производит более 180 видов горюче-смазочных материалов, около 60 из которых впервые освоены в Узбекистане. Завод оснащён аккредитованной лабораторией, сертифицированной по стандарту O'z Dst ISO/IEC 17025-2017, и располагает складами для 4000 тонн сырья и 650 тонн готовой продукции.",
+            "uz": "Kompaniya 180 dan ortiq turdagi yoqilg'i-moylash materiallari ishlab chiqaradi, ulardan 60 ga yaqini O'zbekistonda birinchi marta o'zlashtirilgan. Zavod O'z Dst ISO/IEC 17025-2017 standarti bo'yicha sertifikatlangan akkreditatsiyalangan laboratoriya bilan jihozlangan va 4000 tonna xom ashyo hamda 650 tonna tayyor mahsulot uchun omborlarga ega."
+          },
+          "features": [
+            { "ru": "Аккредитованная лаборатория ISO/IEC 17025-2017", "uz": "ISO/IEC 17025-2017 akkreditatsiyalangan laboratoriya" },
+            { "ru": "Склады на 4000 тонн сырья",                      "uz": "4000 tonna xom ashyo ombori" },
+            { "ru": "650 тонн готовой продукции",                     "uz": "650 tonna tayyor mahsulot" },
+            { "ru": "Автоматизированный производственный процесс",    "uz": "Avtomatlashtirilgan ishlab chiqarish jarayoni" },
+            { "ru": "Собственный автопарк для доставки",              "uz": "Yetkazib berish uchun o'z avtoparki" }
+          ]
+        },
+        {
+          "id": "quality",
+          "title": { "ru": "Стандарты качества", "uz": "Sifat standartlari" },
+          "content": {
+            "ru": "Компания использует премиальных поставщиков ингредиентов: LUBRIZOL, AFTON, ENI, INFINEUM и CHEVRON PHILLIPS. Продукция соответствует международным стандартам и проходит контроль качества на каждом этапе производства. Предприятие имеет сертификат ISO 9001:2015 и экологический сертификат EST.Oz.M.128.29797.",
+            "uz": "Kompaniya premium ingredient yetkazib beruvchilardan foydalanadi: LUBRIZOL, AFTON, ENI, INFINEUM va CHEVRON PHILLIPS. Mahsulotlar xalqaro standartlarga mos keladi va ishlab chiqarishning har bir bosqichida sifat nazoratidan o'tadi. Korxonada ISO 9001:2015 sertifikati va EST.Oz.M.128.29797 ekologik sertifikati mavjud."
+          }
+        }
+      ],
+      "certifications": [
+        { "id": "iso-9001",   "name": "ISO 9001:2015",                "image": "/assets/cert-iso9001.jpg" },
+        { "id": "iso-17025",  "name": "O'z Dst ISO/IEC 17025-2017",   "image": "/assets/cert-iso17025.jpg" },
+        { "id": "eco",        "name": "EST.Oz.M.128.29797",           "image": "/assets/cert-eco.jpg" }
+      ],
+      "suppliers": [
+        { "name": "LUBRIZOL",        "logo": "/assets/suppliers/lubrizol.png" },
+        { "name": "AFTON",           "logo": "/assets/suppliers/afton.png" },
+        { "name": "ENI",             "logo": "/assets/suppliers/eni.png" },
+        { "name": "INFINEUM",        "logo": "/assets/suppliers/infineum.png" },
+        { "name": "CHEVRON PHILLIPS","logo": "/assets/suppliers/chevron.png" }
+      ]
+    },
+
+    "products": {
+      "title": { "ru": "Продукция", "uz": "Mahsulotlar" },
+      "breadcrumb": [
+        { "label": { "ru": "Главная",   "uz": "Bosh sahifa" }, "link": "/" },
+        { "label": { "ru": "Продукция", "uz": "Mahsulotlar" }, "link": "/products" }
+      ]
+    },
+
+    "contacts": {
+      "title": { "ru": "Контакты", "uz": "Kontaktlar" },
+      "breadcrumb": [
+        { "label": { "ru": "Главная",  "uz": "Bosh sahifa" }, "link": "/" },
+        { "label": { "ru": "Контакты", "uz": "Kontaktlar" },  "link": "/contacts" }
+      ],
+      "map": {
+        "embed": "https://yandex.uz/map-widget/v1/?ll=69.379537%2C41.249076&z=16",
+        "coordinates": { "lat": 41.249076, "lng": 69.379537 }
+      }
+    },
+
+    "news": {
+      "title": { "ru": "Новости", "uz": "Yangiliklar" },
+      "breadcrumb": [
+        { "label": { "ru": "Главная",  "uz": "Bosh sahifa" }, "link": "/" },
+        { "label": { "ru": "Новости",  "uz": "Yangiliklar" }, "link": "/news" }
+      ]
+    },
+
+    "partners": {
+      "title": { "ru": "Партнеры", "uz": "Hamkorlar" },
+      "breadcrumb": [
+        { "label": { "ru": "Главная",  "uz": "Bosh sahifa" }, "link": "/" },
+        { "label": { "ru": "Партнеры", "uz": "Hamkorlar" },   "link": "/partners" }
+      ]
+    },
+
+    "jobs": {
+      "title": { "ru": "Работа", "uz": "Ish o'rinlari" },
+      "breadcrumb": [
+        { "label": { "ru": "Главная",  "uz": "Bosh sahifa" }, "link": "/" },
+        { "label": { "ru": "Работа",   "uz": "Ish o'rinlari" }, "link": "/jobs" }
+      ],
+      "description": {
+        "ru": "Присоединяйтесь к команде Chilon Lubricants. Мы предлагаем стабильную работу, конкурентную зарплату и возможности профессионального роста.",
+        "uz": "Chilon Lubricants jamoasiga qo'shiling. Biz barqaror ish, raqobatbardosh ish haqi va kasbiy o'sish imkoniyatlarini taklif qilamiz."
+      }
+    }
+  },
+
+  "productCategories": [
+    {
+      "id": "general-greases",
+      "slug": "general-purpose-greases",
+      "name": { "ru": "Смазки общего назначения", "uz": "Umumiy maqsadli moylar" },
+      "icon": "/assets/icons/grease.svg",
+      "image": "/assets/categories/general-greases.jpg",
+      "description": {
+        "ru": "Универсальные смазки для машин, механизмов и узлов трения общего назначения.",
+        "uz": "Mashinalar, mexanizmlar va umumiy maqsadli ishqalanish tugunlari uchun universal moylar."
+      },
+      "products": [
+        { "id": "solidol",         "name": "Солидол жировой",         "code": "GOST 1033-79",  "applications": "Подшипники качения и скольжения" },
+        { "id": "graphite-grease", "name": "Смазка графитная",         "code": "GOST 3333-80",  "applications": "Открытые зубчатые передачи" },
+        { "id": "litol-24",        "name": "Литол-24",                 "code": "GOST 21150-87", "applications": "Универсальная смазка" },
+        { "id": "1-13",            "name": "Смазка 1-13",              "code": "OST 38.01145-80","applications": "Подшипники колесных пар" },
+        { "id": "tsiatim-201",     "name": "ЦИАТИМ-201",               "code": "GOST 6267-74",  "applications": "Авиационная техника" },
+        { "id": "tsiatim-221",     "name": "ЦИАТИМ-221",               "code": "GOST 9433-80",  "applications": "Высокотемпературная" }
+      ]
+    },
+    {
+      "id": "railway-greases",
+      "slug": "railway-greases",
+      "name": { "ru": "Железнодорожные смазки", "uz": "Temir yo'l moylari" },
+      "icon": "/assets/icons/train.svg",
+      "image": "/assets/categories/railway.jpg",
+      "description": {
+        "ru": "Специализированные смазки для подвижного состава железных дорог.",
+        "uz": "Temir yo'l harakatlanuvchi tarkibi uchun ixtisoslashtirilgan moylar."
+      },
+      "products": [
+        { "id": "lz-cnii",          "name": "ЛЗ-ЦНИИ",          "code": "TU 0254-307-01124328-2002", "applications": "Буксовые узлы подвижного состава" },
+        { "id": "lz-cnii-premium",  "name": "ЛЗ-ЦНИИ PREMIUM",  "code": "TU CHILON",                  "applications": "Премиум буксовая смазка" },
+        { "id": "zhro",             "name": "ЖРО",              "code": "TU 32 ЦТ 520-83",            "applications": "Моторно-осевые подшипники" },
+        { "id": "zhro-premium",     "name": "ЖРО PREMIUM",      "code": "TU CHILON",                  "applications": "Премиум вариант ЖРО" },
+        { "id": "zht-79l",          "name": "ЖТ-79Л",           "code": "TU 0254-002-01055954-01",    "applications": "Тормозные системы" },
+        { "id": "zht-79l-premium",  "name": "ЖТ-79Л PREMIUM",   "code": "TU CHILON",                  "applications": "Премиум вариант ЖТ-79Л" },
+        { "id": "buksol",           "name": "БУКСОЛ",           "code": "TU 0254-107-01124328-01",    "applications": "Буксовые узлы" },
+        { "id": "buksol-premium",   "name": "БУКСОЛ PREMIUM",   "code": "TU CHILON",                  "applications": "Премиум буксол" },
+        { "id": "puma-ty",          "name": "PUMA TY",          "code": "TU CHILON",                  "applications": "Полужидкая смазка контакта колеса и рельса" }
+      ]
+    },
+    {
+      "id": "industrial",
+      "slug": "industrial-lubricants",
+      "name": { "ru": "Индустриальные смазочные материалы", "uz": "Sanoat moylash materiallari" },
+      "icon": "/assets/icons/industry.svg",
+      "image": "/assets/categories/industrial.jpg",
+      "description": {
+        "ru": "Смазочные материалы для промышленного оборудования и станков.",
+        "uz": "Sanoat uskunalari va dastgohlari uchun moylash materiallari."
+      },
+      "products": [
+        { "id": "uniol-2m",       "name": "CHILON UNIOL-2M/2",  "type": "grease", "applications": "Универсальная промышленная" },
+        { "id": "chilon-ip-1",    "name": "CHILON ИП-1",         "type": "grease", "applications": "Прокатное оборудование" },
+        { "id": "i-20a",          "name": "И-20А",               "type": "oil",    "applications": "Промышленное оборудование" },
+        { "id": "i-40a",          "name": "И-40А",               "type": "oil",    "applications": "Промышленное оборудование" },
+        { "id": "i-50a",          "name": "И-50А",               "type": "oil",    "applications": "Промышленное оборудование" },
+        { "id": "rolling-46",     "name": "Прокатное масло PV 46",  "type": "oil", "viscosity": "46" },
+        { "id": "rolling-100",    "name": "Прокатное масло PV 100", "type": "oil", "viscosity": "100" },
+        { "id": "rolling-220",    "name": "Прокатное масло PV 220", "type": "oil", "viscosity": "220" },
+        { "id": "rolling-460",    "name": "Прокатное масло PV 460", "type": "oil", "viscosity": "460" },
+        { "id": "chilon-i-100",   "name": "CHILON И-100 R(S)",   "type": "oil",   "applications": "Промышленное" }
+      ]
+    },
+    {
+      "id": "special-greases",
+      "slug": "special-greases",
+      "name": { "ru": "Специальные смазки", "uz": "Maxsus moylar" },
+      "icon": "/assets/icons/special.svg",
+      "image": "/assets/categories/special.jpg",
+      "description": {
+        "ru": "Смазки специального назначения для уникальных условий эксплуатации.",
+        "uz": "Noyob ekspluatatsiya sharoitlari uchun maxsus maqsadli moylar."
+      },
+      "products": [
+        { "id": "kranol",            "name": "KRANOL уплотнительная смазка", "applications": "Уплотнения" },
+        { "id": "nvi-limo-1",        "name": "CHILON NVI LiMo NLGI 1",       "nlgi": "1" },
+        { "id": "nvi-limo-2",        "name": "CHILON NVI LiMo NLGI 2",       "nlgi": "2" },
+        { "id": "nvi-limo-3",        "name": "CHILON NVI LiMo NLGI 3",       "nlgi": "3" },
+        { "id": "nvi-okli-00",       "name": "CHILON NVI OkLi EP NLGI 00",   "nlgi": "00" },
+        { "id": "nvi-okli-0",        "name": "CHILON NVI OkLi EP NLGI 0",    "nlgi": "0" },
+        { "id": "nvi-okli-1",        "name": "CHILON NVI OkLi EP NLGI 1",    "nlgi": "1" },
+        { "id": "nvi-okli-2",        "name": "CHILON NVI OkLi EP NLGI 2",    "nlgi": "2" },
+        { "id": "nvi-okli-3",        "name": "CHILON NVI OkLi EP NLGI 3",    "nlgi": "3" },
+        { "id": "nvi-litec-1",       "name": "NVI LiTec NLGI 1",             "nlgi": "1" },
+        { "id": "nvi-litec-2",       "name": "NVI LiTec NLGI 2",             "nlgi": "2" },
+        { "id": "nvi-litec-3",       "name": "NVI LiTec NLGI 3",             "nlgi": "3" },
+        { "id": "rzh",               "name": "Масло ружейное РЖ",            "applications": "Оружие" },
+        { "id": "chilon-3es",        "name": "CHILON 3ЭС",                   "applications": "Электрические машины" }
+      ]
+    },
+    {
+      "id": "motor-diesel",
+      "slug": "diesel-motor-oils",
+      "name": { "ru": "Моторные масла (дизельные)", "uz": "Motor moylari (dizel)" },
+      "icon": "/assets/icons/oil.svg",
+      "image": "/assets/categories/motor-diesel.jpg",
+      "description": {
+        "ru": "Моторные масла для дизельных двигателей грузового и легкового транспорта.",
+        "uz": "Yuk va yengil transport dizel dvigatellari uchun motor moylari."
+      },
+      "products": [
+        { "id": "platinum-dt-5w40",  "name": "Chilon Platinum DT 5W-40",  "sae": "5W-40",  "tier": "premium" },
+        { "id": "platinum-dt-10w30", "name": "Chilon Platinum DT 10W-30", "sae": "10W-30", "tier": "premium" },
+        { "id": "platinum-dt-10w40", "name": "Chilon Platinum DT 10W-40", "sae": "10W-40", "tier": "premium" },
+        { "id": "platinum-dt-15w40", "name": "Chilon Platinum DT 15W-40", "sae": "15W-40", "tier": "premium" },
+        { "id": "aurum-dt-10w30",    "name": "Chilon Aurum DT 10W-30",    "sae": "10W-30", "tier": "high" },
+        { "id": "aurum-dt-15w40",    "name": "Chilon Aurum DT 15W-40",    "sae": "15W-40", "tier": "high" },
+        { "id": "aurum-dt-10w40",    "name": "Chilon Aurum DT 10W-40",    "sae": "10W-40", "tier": "high" },
+        { "id": "argentum-dt-10w30", "name": "Chilon Argentum DT 10W-30", "sae": "10W-30", "tier": "standard" },
+        { "id": "argentum-dt-10w40", "name": "Chilon Argentum DT 10W-40", "sae": "10W-40", "tier": "standard" },
+        { "id": "argentum-dt-15w40", "name": "Chilon Argentum DT 15W-40", "sae": "15W-40", "tier": "standard" },
+        { "id": "argentum-dt-20w50", "name": "Chilon Argentum DT 20W-50", "sae": "20W-50", "tier": "standard" },
+        { "id": "argentum-dt-20w60", "name": "Chilon Argentum DT 20W-60", "sae": "20W-60", "tier": "standard" },
+        { "id": "m-10b2s",           "name": "М-10Б2С",     "standard": "GOST" },
+        { "id": "m-14b2",            "name": "М-14Б2",      "standard": "GOST" },
+        { "id": "m-14d2",            "name": "М-14Д2",      "standard": "GOST" },
+        { "id": "m-20b2f",           "name": "М-20Б2Ф",     "standard": "GOST" },
+        { "id": "mt-16p",            "name": "МТ-16П",      "standard": "GOST" },
+        { "id": "m-16pc",            "name": "М-16ПЦ",      "standard": "GOST" }
+      ]
+    },
+    {
+      "id": "motor-gasoline",
+      "slug": "gasoline-motor-oils",
+      "name": { "ru": "Моторные масла (бензиновые)", "uz": "Motor moylari (benzin)" },
+      "icon": "/assets/icons/oil.svg",
+      "image": "/assets/categories/motor-gasoline.jpg",
+      "description": {
+        "ru": "Моторные масла для бензиновых двигателей легковых автомобилей.",
+        "uz": "Yengil avtomobillarning benzin dvigatellari uchun motor moylari."
+      },
+      "products": [
+        { "id": "platinum-0w20",  "name": "Chilon Platinum 0W-20",  "sae": "0W-20",  "tier": "premium" },
+        { "id": "platinum-5w20",  "name": "Chilon Platinum 5W-20",  "sae": "5W-20",  "tier": "premium" },
+        { "id": "platinum-5w30",  "name": "Chilon Platinum 5W-30",  "sae": "5W-30",  "tier": "premium" },
+        { "id": "platinum-10w30", "name": "Chilon Platinum 10W-30", "sae": "10W-30", "tier": "premium" },
+        { "id": "platinum-5w40",  "name": "Chilon Platinum 5W-40",  "sae": "5W-40",  "tier": "premium" },
+        { "id": "aurum-5w30",     "name": "Chilon Aurum 5W-30",     "sae": "5W-30",  "tier": "high" },
+        { "id": "aurum-5w40",     "name": "Chilon Aurum 5W-40",     "sae": "5W-40",  "tier": "high" },
+        { "id": "aurum-10w30",    "name": "Chilon Aurum 10W-30",    "sae": "10W-30", "tier": "high" },
+        { "id": "aurum-10w40",    "name": "Chilon Aurum 10W-40",    "sae": "10W-40", "tier": "high" },
+        { "id": "aurum-15w40",    "name": "Chilon Aurum 15W-40",    "sae": "15W-40", "tier": "high" },
+        { "id": "argentum-5w40",  "name": "Chilon Argentum 5W-40",  "sae": "5W-40",  "tier": "standard" },
+        { "id": "argentum-10w30", "name": "Chilon Argentum 10W-30", "sae": "10W-30", "tier": "standard" },
+        { "id": "argentum-10w40", "name": "Chilon Argentum 10W-40", "sae": "10W-40", "tier": "standard" },
+        { "id": "argentum-15w40", "name": "Chilon Argentum 15W-40", "sae": "15W-40", "tier": "standard" },
+        { "id": "argentum-20w50", "name": "Chilon Argentum 20W-50", "sae": "20W-50", "tier": "standard" },
+        { "id": "cuprum-5w30",    "name": "Chilon Cuprum 5W-30",    "sae": "5W-30",  "tier": "economy" },
+        { "id": "cuprum-5w40",    "name": "Chilon Cuprum 5W-40",    "sae": "5W-40",  "tier": "economy" },
+        { "id": "cuprum-10w30",   "name": "Chilon Cuprum 10W-30",   "sae": "10W-30", "tier": "economy" },
+        { "id": "cuprum-10w40",   "name": "Chilon Cuprum 10W-40",   "sae": "10W-40", "tier": "economy" },
+        { "id": "nvi-mineral",    "name": "CHILON NVI минеральные", "type": "mineral" },
+        { "id": "chilon-cng",     "name": "CHILON MOTOR OIL CNG",   "type": "gas" }
+      ]
+    },
+    {
+      "id": "transmission",
+      "slug": "transmission-oils",
+      "name": { "ru": "Трансмиссионные масла", "uz": "Uzatma moylari" },
+      "icon": "/assets/icons/gear.svg",
+      "image": "/assets/categories/transmission.jpg",
+      "description": {
+        "ru": "Трансмиссионные масла для механических коробок передач, мостов и редукторов.",
+        "uz": "Mexanik uzatmalar qutilari, ko'priklar va reduktorlar uchun uzatma moylari."
+      },
+      "products": [
+        { "id": "chilon-80w90-gl4",   "name": "CHILON SAE 80W-90 GL-4",  "sae": "80W-90",  "api": "GL-4" },
+        { "id": "chilon-85w140-gl5",  "name": "CHILON SAE 85W-140 GL-5", "sae": "85W-140", "api": "GL-5" },
+        { "id": "nvi-80w90-gl5",      "name": "CHILON NVI 80W-90 GL-5",  "sae": "80W-90",  "api": "GL-5" },
+        { "id": "nvi-85w140-gl5",     "name": "CHILON NVI 85W-140 GL-5", "sae": "85W-140", "api": "GL-5" },
+        { "id": "synth-75w85",        "name": "Синтетическое 75W-85",    "sae": "75W-85",  "type": "synthetic" },
+        { "id": "synth-75w90-gl4",    "name": "Синтетическое 75W-90 GL-4","sae": "75W-90", "api": "GL-4", "type": "synthetic" },
+        { "id": "synth-75w90-gl5",    "name": "Синтетическое 75W-90 GL-5","sae": "75W-90", "api": "GL-5", "type": "synthetic" },
+        { "id": "tep-15",             "name": "ТЭп-15",  "standard": "GOST" },
+        { "id": "tsp-10",             "name": "ТСп-10",  "standard": "GOST" },
+        { "id": "tap-15v",            "name": "ТАп-15В", "standard": "GOST" },
+        { "id": "tsp-14",             "name": "ТСп-14",  "standard": "GOST" },
+        { "id": "tad-17i",            "name": "ТАД-17и", "standard": "GOST" }
+      ]
+    },
+    {
+      "id": "hydraulic",
+      "slug": "hydraulic-oils",
+      "name": { "ru": "Гидравлические масла", "uz": "Gidravlik moylar" },
+      "icon": "/assets/icons/hydraulic.svg",
+      "image": "/assets/categories/hydraulic.jpg",
+      "description": {
+        "ru": "Гидравлические масла для гидросистем промышленного и мобильного оборудования.",
+        "uz": "Sanoat va mobil uskunalar gidravlik tizimlari uchun gidravlik moylar."
+      },
+      "products": [
+        { "id": "chilon-22",       "name": "CHILON 22",         "iso-vg": "22" },
+        { "id": "chilon-32",       "name": "CHILON 32",         "iso-vg": "32" },
+        { "id": "chilon-46",       "name": "CHILON 46",         "iso-vg": "46" },
+        { "id": "chilon-68",       "name": "CHILON 68",         "iso-vg": "68" },
+        { "id": "hvlp-nvi-32",     "name": "CHILON HVLP NVI 32","iso-vg": "32" },
+        { "id": "hvlp-nvi-46",     "name": "CHILON HVLP NVI 46","iso-vg": "46" },
+        { "id": "hvlp-nvi-68",     "name": "CHILON HVLP NVI 68","iso-vg": "68" },
+        { "id": "hvlp-nvi-100",    "name": "CHILON HVLP NVI 100","iso-vg":"100" },
+        { "id": "hvlp-nvi-150",    "name": "CHILON HVLP NVI 150","iso-vg":"150" }
+      ]
+    },
+    {
+      "id": "gear-oils",
+      "slug": "gear-oils",
+      "name": { "ru": "Редукторные масла", "uz": "Reduktor moylari" },
+      "icon": "/assets/icons/gear.svg",
+      "image": "/assets/categories/gear.jpg",
+      "description": {
+        "ru": "Масла для зубчатых передач и редукторов промышленного оборудования.",
+        "uz": "Tishli uzatmalar va sanoat uskunalari reduktorlari uchun moylar."
+      },
+      "products": [
+        { "id": "gear-nvi-32",    "name": "CHILON NVI 32",   "iso-vg": "32" },
+        { "id": "gear-nvi-46",    "name": "CHILON NVI 46",   "iso-vg": "46" },
+        { "id": "gear-nvi-68",    "name": "CHILON NVI 68",   "iso-vg": "68" },
+        { "id": "gear-nvi-100",   "name": "CHILON NVI 100",  "iso-vg": "100" },
+        { "id": "gear-nvi-150",   "name": "CHILON NVI 150",  "iso-vg": "150" },
+        { "id": "gear-nvi-220",   "name": "CHILON NVI 220",  "iso-vg": "220" },
+        { "id": "gear-nvi-320",   "name": "CHILON NVI 320",  "iso-vg": "320" },
+        { "id": "gear-nvi-460",   "name": "CHILON NVI 460",  "iso-vg": "460" },
+        { "id": "gear-synth-32",  "name": "CHILON NVI Synthetic S 32",  "iso-vg": "32",  "type": "synthetic" },
+        { "id": "gear-synth-680", "name": "CHILON NVI Synthetic S 680", "iso-vg": "680", "type": "synthetic" }
+      ]
+    },
+    {
+      "id": "turbine",
+      "slug": "turbine-oils",
+      "name": { "ru": "Турбинные масла", "uz": "Turbina moylari" },
+      "icon": "/assets/icons/turbine.svg",
+      "image": "/assets/categories/turbine.jpg",
+      "description": {
+        "ru": "Турбинные масла для паровых и газовых турбин, циркуляционных систем.",
+        "uz": "Bug' va gaz turbinalari, sirkulyatsion tizimlar uchun turbina moylari."
+      },
+      "products": [
+        { "id": "ukg-32",  "name": "CHILON UKG 32",  "iso-vg": "32" },
+        { "id": "ukg-46",  "name": "CHILON UKG 46",  "iso-vg": "46" },
+        { "id": "ukg-68",  "name": "CHILON UKG 68",  "iso-vg": "68" },
+        { "id": "ukg-100", "name": "CHILON UKG 100", "iso-vg": "100" },
+        { "id": "tp-22",   "name": "ТП-22",          "standard": "GOST" },
+        { "id": "tp-30",   "name": "ТП-30",          "standard": "GOST" },
+        { "id": "tp-46",   "name": "ТП-46",          "standard": "GOST" }
+      ]
+    },
+    {
+      "id": "specialty",
+      "slug": "specialty-oils",
+      "name": { "ru": "Масла специального назначения", "uz": "Maxsus maqsadli moylar" },
+      "icon": "/assets/icons/special.svg",
+      "image": "/assets/categories/specialty.jpg",
+      "description": {
+        "ru": "Специальные масла для трансформаторов, авиации, компрессоров и холодильной техники.",
+        "uz": "Transformatorlar, aviatsiya, kompressorlar va sovutgich texnikasi uchun maxsus moylar."
+      },
+      "products": [
+        { "id": "t-1500",          "name": "Трансформаторное Т-1500",      "applications": "Трансформаторы" },
+        { "id": "ms-20",           "name": "Авиационное МС-20",            "applications": "Авиация" },
+        { "id": "ks-19",           "name": "Компрессорное КС-19",          "applications": "Компрессоры" },
+        { "id": "ha-30",           "name": "Холодильное ХА-30",            "applications": "Холодильные установки" },
+        { "id": "compressor-46",   "name": "CHILON COMPRESSOR OIL VG 46",  "iso-vg": "46" },
+        { "id": "compressor-100",  "name": "CHILON COMPRESSOR OIL VG 100", "iso-vg": "100" },
+        { "id": "compressor-220",  "name": "CHILON COMPRESSOR OIL VG 220", "iso-vg": "220" },
+        { "id": "compressor-320",  "name": "CHILON COMPRESSOR OIL VG 320", "iso-vg": "320" }
+      ]
+    },
+    {
+      "id": "coolants",
+      "slug": "coolants",
+      "name": { "ru": "Охлаждающие жидкости", "uz": "Sovutuvchi suyuqliklar" },
+      "icon": "/assets/icons/coolant.svg",
+      "image": "/assets/categories/coolants.jpg",
+      "description": {
+        "ru": "Охлаждающие жидкости, антифризы и технологические жидкости.",
+        "uz": "Sovutuvchi suyuqliklar, antifrizlar va texnologik suyuqliklar."
+      },
+      "products": [
+        { "id": "nvi-m65",        "name": "CHILON NVI M-65",            "type": "antifreeze" },
+        { "id": "nvi-conc-k",     "name": "CHILON NVI Concentrate K",   "type": "concentrate" },
+        { "id": "nvi-conc-m",     "name": "CHILON NVI Concentrate M",   "type": "concentrate" },
+        { "id": "mpa-95",         "name": "CHILON MPA-95",              "type": "flushing-oil" },
+        { "id": "chilon-dm",      "name": "CHILON DM",                  "type": "drilling-fluid" },
+        { "id": "nvi-m40",        "name": "NVI M-40",                   "type": "coolant" }
+      ]
+    }
+  ],
+
+  "news": [
+    {
+      "id": "open-house-2024",
+      "slug": "den-otkrytyh-dverej",
+      "date": "2024-09-22",
+      "title": { "ru": "День открытых дверей", "uz": "Ochiq eshiklar kuni" },
+      "excerpt": { "ru": "Приглашаем на экскурсию по нашему производству.", "uz": "Bizning ishlab chiqarish ekskursiyasiga taklif qilamiz." },
+      "image": "/assets/news/open-house.jpg",
+      "content": { "ru": "Приглашаем посетить наш завод и увидеть процесс производства смазочных материалов изнутри.", "uz": "Zavodimizga tashrif buyurib, moylash materiallari ishlab chiqarish jarayonini ichkaridan ko'rishingizni taklif qilamiz." }
+    },
+    {
+      "id": "independence-day-2024",
+      "slug": "den-nezavisimosti-2024",
+      "date": "2024-08-31",
+      "title": { "ru": "С Днём Независимости Узбекистана!", "uz": "O'zbekiston Mustaqilligi kuni bilan!" },
+      "excerpt": { "ru": "Поздравляем с национальным праздником.", "uz": "Milliy bayram bilan tabriklaymiz." },
+      "image": "/assets/news/independence.jpg",
+      "content": { "ru": "Команда Chilon Lubricants поздравляет всех узбекистанцев с Днём Независимости!", "uz": "Chilon Lubricants jamoasi barcha O'zbekistonliklarni Mustaqillik kuni bilan tabriklaydi!" }
+    },
+    {
+      "id": "network-expansion-2024",
+      "slug": "rasshirenie-seti",
+      "date": "2024-07-17",
+      "title": { "ru": "Расширение сети", "uz": "Tarmoqni kengaytirish" },
+      "excerpt": { "ru": "Открыты новые дилерские центры в регионах.", "uz": "Mintaqalarda yangi diler markazlari ochildi." },
+      "image": "/assets/news/network.jpg",
+      "content": { "ru": "Компания открыла дилерские центры по продаже смазочных материалов в регионах Узбекистана.", "uz": "Kompaniya O'zbekiston mintaqalarida moylash materiallari sotuvi bo'yicha diler markazlarini ochdi." }
+    },
+    {
+      "id": "drilling-innovation-2024",
+      "slug": "innovacionnyj-burovoy",
+      "date": "2024-07-16",
+      "title": { "ru": "Инновационный продукт в области буровых растворов", "uz": "Burg'i eritmalari sohasidagi innovatsion mahsulot" },
+      "excerpt": { "ru": "Запуск нового продукта CHILON DM.", "uz": "Yangi CHILON DM mahsulotining ishga tushirilishi." },
+      "image": "/assets/news/drilling.jpg",
+      "content": { "ru": "Представляем инновационную разработку в области буровых растворов — CHILON DM.", "uz": "Burg'i eritmalari sohasidagi innovatsion ishlanma — CHILON DM ni taqdim etamiz." }
+    },
+    {
+      "id": "hot-stamping-2024",
+      "slug": "novaya-soj",
+      "date": "2024-06-13",
+      "title": { "ru": "Новая смазочно-охлаждающая жидкость", "uz": "Yangi moylash-sovutuvchi suyuqlik" },
+      "excerpt": { "ru": "СОЖ для горячей штамповки алюминия.", "uz": "Aluminiy issiq shtamplash uchun MSS." },
+      "image": "/assets/news/coolant.jpg",
+      "content": { "ru": "Выпущена специализированная охлаждающая жидкость для процессов горячей штамповки алюминия.", "uz": "Aluminiy issiq shtamplash jarayonlari uchun ixtisoslashtirilgan sovutuvchi suyuqlik chiqarildi." }
+    },
+    {
+      "id": "kurban-ait-2024",
+      "slug": "kurban-hayit",
+      "date": "2024-06-10",
+      "title": { "ru": "С праздником Курбан Хаит!", "uz": "Qurbon Hayit muborak!" },
+      "excerpt": { "ru": "Поздравляем с праздником.", "uz": "Bayram bilan tabriklaymiz." },
+      "image": "/assets/news/kurban.jpg",
+      "content": { "ru": "Поздравляем всех мусульман с праздником Курбан Хаит!", "uz": "Barcha musulmonlarni Qurbon Hayit bilan tabriklaymiz!" }
+    },
+    {
+      "id": "promotors-show-2024",
+      "slug": "promotors-show-2024",
+      "date": "2024-06-02",
+      "title": { "ru": "Четырехдневный фестиваль Promotors Show 2024", "uz": "To'rt kunlik Promotors Show 2024 festivali" },
+      "excerpt": { "ru": "Участие компании в фестивале в Самарканде.", "uz": "Kompaniyaning Samarqanddagi festivalda ishtiroki." },
+      "image": "/assets/news/promotors.jpg",
+      "content": { "ru": "Компания CHILON приняла участие в четырехдневном промо-фестивале в Самарканде.", "uz": "CHILON kompaniyasi Samarqandda to'rt kunlik promo-festivalda ishtirok etdi." }
+    },
+    {
+      "id": "argentum-test-2024",
+      "slug": "test-argentum-dt",
+      "date": "2024-05-14",
+      "title": { "ru": "Тестирование CHILON ARGENTUM DT", "uz": "CHILON ARGENTUM DT sinovi" },
+      "excerpt": { "ru": "Испытания моторного масла на автопарке.", "uz": "Avtoparkda motor moyining sinovlari." },
+      "image": "/assets/news/argentum.jpg",
+      "content": { "ru": "Поддержание двигателя в хорошем состоянии — залог долгой и эффективной работы.", "uz": "Dvigatelni yaxshi holatda saqlash — uzoq va samarali ish kafolatidir." }
+    },
+    {
+      "id": "memorial-day-2024",
+      "slug": "den-pamyati",
+      "date": "2024-05-09",
+      "title": { "ru": "День памяти", "uz": "Xotira kuni" },
+      "excerpt": { "ru": "Чтим память героев.", "uz": "Qahramonlar xotirasini yodga olamiz." },
+      "image": "/assets/news/memorial.jpg",
+      "content": { "ru": "Сегодня мы чтим память всех погибших в Великой Отечественной войне.", "uz": "Bugun biz Ulug' Vatan urushida halok bo'lganlarning barchasini yodga olamiz." }
+    },
+    {
+      "id": "ramadan-2024",
+      "slug": "ramazan-hayit-2024",
+      "date": "2024-04-10",
+      "title": { "ru": "Поздравляем со светлым праздником Рамазан Хаит!", "uz": "Ramazon Hayit muborak bo'lsin!" },
+      "excerpt": { "ru": "Поздравляем с праздником Рамазан.", "uz": "Ramazon bayrami bilan tabriklaymiz." },
+      "image": "/assets/news/ramadan.jpg",
+      "content": { "ru": "Команда Chilon Lubricants поздравляет всех мусульман со светлым праздником Рамазан Хаит!", "uz": "Chilon Lubricants jamoasi barcha musulmonlarni Ramazon Hayit bilan tabriklaydi!" }
+    }
+  ],
+
+  "partners": [
+    { "id": 1,  "name": "UNG",     "logo": "/assets/partners/ung.png",        "url": "" },
+    { "id": 2,  "name": "Eriell",  "logo": "/assets/partners/eriell.png",     "url": "" },
+    { "id": 3,  "name": "Partner 3",  "logo": "/assets/partners/p3.png",  "url": "" },
+    { "id": 4,  "name": "Partner 4",  "logo": "/assets/partners/p4.png",  "url": "" },
+    { "id": 5,  "name": "Partner 5",  "logo": "/assets/partners/p5.png",  "url": "" },
+    { "id": 6,  "name": "Partner 6",  "logo": "/assets/partners/p6.png",  "url": "" },
+    { "id": 7,  "name": "Partner 7",  "logo": "/assets/partners/p7.png",  "url": "" },
+    { "id": 8,  "name": "Partner 8",  "logo": "/assets/partners/p8.png",  "url": "" },
+    { "id": 9,  "name": "Partner 9",  "logo": "/assets/partners/p9.png",  "url": "" },
+    { "id": 10, "name": "Partner 10", "logo": "/assets/partners/p10.png", "url": "" },
+    { "id": 11, "name": "Partner 11", "logo": "/assets/partners/p11.png", "url": "" },
+    { "id": 12, "name": "Partner 12", "logo": "/assets/partners/p12.png", "url": "" },
+    { "id": 13, "name": "Partner 13", "logo": "/assets/partners/p13.png", "url": "" },
+    { "id": 14, "name": "Partner 14", "logo": "/assets/partners/p14.png", "url": "" },
+    { "id": 15, "name": "Partner 15", "logo": "/assets/partners/p15.png", "url": "" },
+    { "id": 16, "name": "Partner 16", "logo": "/assets/partners/p16.png", "url": "" },
+    { "id": 17, "name": "Partner 17", "logo": "/assets/partners/p17.png", "url": "" },
+    { "id": 18, "name": "Partner 18", "logo": "/assets/partners/p18.png", "url": "" },
+    { "id": 19, "name": "Partner 19", "logo": "/assets/partners/p19.png", "url": "" }
+  ],
+
+  "contacts": {
+    "company": {
+      "ru": "ООО «Chilon Lubricants»",
+      "uz": "«Chilon Lubricants» MChJ"
+    },
+    "email": "info@chilon.uz",
+    "address": {
+      "ru": "г. Ташкент, Бектемирский район, ул. Олтинтопган, 14",
+      "uz": "Toshkent sh., Bektemir tumani, Oltintopgan ko'chasi, 14"
+    },
+    "workingHours": {
+      "ru": "Пн-Пт с 9:00 до 18:00. Сб-Вс — выходные",
+      "uz": "Du-Ju 9:00 dan 18:00 gacha. Sh-Ya — dam olish kunlari"
+    },
+    "departments": [
+      {
+        "id": "b2b",
+        "name": { "ru": "Отдел продаж B2B", "uz": "B2B savdo bo'limi" },
+        "phones": ["+998 (77) 724-23-18", "+998 (71) 292-92-46"]
+      },
+      {
+        "id": "b2c",
+        "name": { "ru": "Отдел продаж B2C", "uz": "B2C savdo bo'limi" },
+        "phones": ["+998 (95) 629-95-04"]
+      },
+      {
+        "id": "admin",
+        "name": { "ru": "Административный офис", "uz": "Ma'muriy ofis" },
+        "phones": ["+998 (78) 777-05-05", "+998 (71) 292-94-55"]
+      },
+      {
+        "id": "accounting",
+        "name": { "ru": "Бухгалтерия", "uz": "Buxgalteriya" },
+        "phones": ["+998 (71) 292-77-78"]
+      }
+    ],
+    "dealers": [
+      { "region": { "ru": "Сырдарьинская область",  "uz": "Sirdaryo viloyati" },    "phone": "+998 (88) 224-14-94" },
+      { "region": { "ru": "Навоийская область",     "uz": "Navoiy viloyati" },      "phone": "+998 (95) 629-95-04" },
+      { "region": { "ru": "Бухарская область",      "uz": "Buxoro viloyati" },      "phone": "+998 (95) 629-05-06" },
+      { "region": { "ru": "Кашкадарьинская область","uz": "Qashqadaryo viloyati" }, "phone": "+998 (90) 721-60-07" },
+      { "region": { "ru": "Ферганская область",     "uz": "Farg'ona viloyati" },    "phone": "+998 (91) 771-66-66" },
+      { "region": { "ru": "Андижанская область",    "uz": "Andijon viloyati" },     "phone": "+998 (20) 007-90-06" },
+      { "region": { "ru": "Наманганская область",   "uz": "Namangan viloyati" },    "phone": "+998 (90) 555-02-08" },
+      { "region": { "ru": "Сурхандарьинская область","uz": "Surxondaryo viloyati" },"phone": "+998 (97) 243-77-00" },
+      { "region": { "ru": "Хорезмская область",     "uz": "Xorazm viloyati" },      "phone": "+998 (91) 277-80-00" }
+    ]
+  },
+
+  "footer": {
+    "about": {
+      "title": { "ru": "О компании", "uz": "Kompaniya haqida" },
+      "text":  {
+        "ru": "ООО Chilon Lubricants — производитель смазочных материалов в Узбекистане. С 2013 года мы выпускаем высококачественную национальную продукцию.",
+        "uz": "Chilon Lubricants MChJ — O'zbekistondagi moylash materiallari ishlab chiqaruvchisi. 2013 yildan beri biz yuqori sifatli milliy mahsulot ishlab chiqaramiz."
+      }
+    },
+    "columns": [
+      {
+        "title": { "ru": "Навигация", "uz": "Navigatsiya" },
+        "links": [
+          { "label": { "ru": "Главная",    "uz": "Bosh sahifa" },     "url": "/" },
+          { "label": { "ru": "О компании", "uz": "Kompaniya haqida" }, "url": "/about" },
+          { "label": { "ru": "Продукция",  "uz": "Mahsulotlar" },     "url": "/products" },
+          { "label": { "ru": "Новости",    "uz": "Yangiliklar" },     "url": "/news" },
+          { "label": { "ru": "Контакты",   "uz": "Kontaktlar" },      "url": "/contacts" }
+        ]
+      },
+      {
+        "title": { "ru": "Каталог", "uz": "Katalog" },
+        "links": [
+          { "label": { "ru": "Моторные масла",             "uz": "Motor moylari" },             "url": "/products/motor-gasoline" },
+          { "label": { "ru": "Трансмиссионные масла",      "uz": "Uzatma moylari" },            "url": "/products/transmission" },
+          { "label": { "ru": "Гидравлические масла",       "uz": "Gidravlik moylar" },          "url": "/products/hydraulic" },
+          { "label": { "ru": "Смазки",                     "uz": "Moylar" },                     "url": "/products/general-greases" },
+          { "label": { "ru": "Охлаждающие жидкости",       "uz": "Sovutuvchi suyuqliklar" },    "url": "/products/coolants" }
+        ]
+      },
+      {
+        "title": { "ru": "Контакты", "uz": "Kontaktlar" },
+        "links": [
+          { "label": "+998 (78) 777-05-05", "url": "tel:+998787770505" },
+          { "label": "info@chilon.uz",      "url": "mailto:info@chilon.uz" }
+        ]
+      }
+    ],
+    "legal": [
+      { "label": { "ru": "Пользовательское соглашение", "uz": "Foydalanuvchi shartnomasi" }, "url": "/agreement" },
+      { "label": { "ru": "Политика конфиденциальности", "uz": "Maxfiylik siyosati" },         "url": "/privacy" }
+    ],
+    "copyright": {
+      "ru": "© 2018-2026 ООО «Chilon Lubricants». Все права защищены.",
+      "uz": "© 2018-2026 «Chilon Lubricants» MChJ. Barcha huquqlar himoyalangan."
+    }
+  },
+
+  "ui": {
+    "buttons": {
+      "more":        { "ru": "Подробнее",         "uz": "Batafsil" },
+      "all":         { "ru": "Смотреть все",      "uz": "Hammasini ko'rish" },
+      "send":        { "ru": "Отправить",         "uz": "Yuborish" },
+      "callback":    { "ru": "Заказать звонок",   "uz": "Qo'ng'iroq buyurtma qilish" },
+      "consultation":{ "ru": "Получить консультацию","uz": "Maslahat olish" },
+      "catalog":     { "ru": "Скачать каталог",   "uz": "Katalogni yuklab olish" },
+      "backToList":  { "ru": "Вернуться к списку","uz": "Ro'yxatga qaytish" }
+    },
+    "labels": {
+      "phone":       { "ru": "Телефон",     "uz": "Telefon" },
+      "email":       { "ru": "Email",       "uz": "Email" },
+      "address":     { "ru": "Адрес",       "uz": "Manzil" },
+      "name":        { "ru": "Имя",         "uz": "Ism" },
+      "message":     { "ru": "Сообщение",   "uz": "Xabar" },
+      "category":    { "ru": "Категория",   "uz": "Kategoriya" },
+      "specs":       { "ru": "Характеристики","uz": "Xususiyatlari" },
+      "applications":{ "ru": "Применение",  "uz": "Qo'llanilishi" },
+      "search":      { "ru": "Поиск",       "uz": "Qidiruv" },
+      "noResults":   { "ru": "Ничего не найдено","uz": "Hech narsa topilmadi" }
+    },
+    "messages": {
+      "formSuccess": { "ru": "Спасибо! Мы свяжемся с вами в ближайшее время.", "uz": "Rahmat! Tez orada siz bilan bog'lanamiz." },
+      "formError":   { "ru": "Ошибка отправки. Попробуйте позже.",            "uz": "Yuborishda xatolik. Keyinroq urinib ko'ring." },
+      "loading":     { "ru": "Загрузка...",                                    "uz": "Yuklanmoqda..." }
+    }
+  },
+
+  "seo": {
+    "default": {
+      "title":       "Chilon Lubricants - Производство смазочных материалов в Узбекистане",
+      "description": "ООО Chilon Lubricants — национальный производитель моторных масел, трансмиссионных, гидравлических и индустриальных смазочных материалов в Узбекистане с 2013 года.",
+      "keywords":    "смазочные материалы, моторные масла, Узбекистан, Ташкент, Chilon, производство, масла, смазки"
+    },
+    "openGraph": {
+      "image": "/assets/og-image.jpg",
+      "type":  "website",
+      "locale":"ru_RU"
+    }
+  }
+}
