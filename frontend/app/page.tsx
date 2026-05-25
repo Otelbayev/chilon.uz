@@ -6,15 +6,16 @@ import { gsap } from 'gsap';
 import { motion, AnimatePresence } from 'motion/react';
 import { useLang } from '@/lib/i18n';
 import { api, pickLang, productImage } from '@/lib/api';
-import type { Product, Partner, NewsItem } from '@/lib/types';
+import Footer from '@/components/Footer';
+import type { Category, Partner, NewsItem } from '@/lib/types';
 
-const SECTIONS = ['hero', 'products', 'partners', 'cta'] as const;
+const SECTIONS = ['hero', 'categories', 'partners', 'cta'] as const;
 type SectionKey = (typeof SECTIONS)[number];
 
 export default function HomePage() {
   const { lang, t } = useLang();
   const scrollerRef = useRef<HTMLDivElement>(null);
-  const [products, setProducts] = useState<Product[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const [partners, setPartners] = useState<Partner[]>([]);
   const [news, setNews] = useState<NewsItem[]>([]);
   const [activeIdx, setActiveIdx] = useState(0);
@@ -22,28 +23,23 @@ export default function HomePage() {
   useEffect(() => {
     let cancelled = false;
     Promise.all([
-      api.products(lang, { limit: 12 }),
+      api.categories(lang),
       api.partners(lang),
       api.news(lang, { limit: 3 }),
-    ]).then(([p, parts, n]) => {
+    ]).then(([cats, parts, n]) => {
       if (cancelled) return;
-      setProducts((Array.isArray(p) ? p : p.items)?.slice(0, 12) || []);
+      setCategories((cats || []).slice(0, 12));
       setPartners((parts || []).slice(0, 12));
       setNews((Array.isArray(n) ? n : n.items)?.slice(0, 3) || []);
     }).catch(() => {});
     return () => { cancelled = true; };
   }, [lang]);
 
-  // GSAP intro animation for hero (runs once on mount)
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-      tl.from('[data-hero-tag]', { y: 30, opacity: 0, duration: 0.7, delay: 0.15 })
-        .from('[data-hero-line]', { y: 60, opacity: 0, duration: 0.9, stagger: 0.12 }, '-=0.4')
-        .from('[data-hero-sub]', { y: 30, opacity: 0, duration: 0.7 }, '-=0.5')
-        .from('[data-hero-cta]', { y: 20, opacity: 0, duration: 0.6, stagger: 0.1 }, '-=0.4')
-        .from('[data-hero-stat]', { y: 20, opacity: 0, duration: 0.6, stagger: 0.08 }, '-=0.4')
-        .from('[data-hero-carousel]', { scale: 0.7, opacity: 0, duration: 1.0, ease: 'power2.out' }, '-=0.9');
+      tl.from('[data-hero-line]', { y: 60, opacity: 0, duration: 1.0, stagger: 0.14, delay: 0.2 })
+        .from('[data-hero-sub]', { y: 30, opacity: 0, duration: 0.8 }, '-=0.55');
     });
     return () => ctx.revert();
   }, []);
@@ -111,10 +107,13 @@ export default function HomePage() {
         data-lenis-prevent
         style={{ scrollbarWidth: 'none' }}
       >
-        <HeroSlide t={t} active={activeIdx === 0} products={products} />
-        <ProductsSlide t={t} products={products.slice(0, 6)} />
+        <HeroSlide t={t} active={activeIdx === 0} />
+        <CategoriesSlide t={t} lang={lang} categories={categories} />
         <PartnersSlide t={t} partners={partners} />
         <CtaSlide t={t} lang={lang} news={news} />
+        <div className="lg:snap-start">
+          <Footer />
+        </div>
       </div>
     </>
   );
@@ -147,14 +146,13 @@ function SlideShell({
 }
 
 /* ===================================================== */
-/* HERO — video bg + carousel on right                    */
+/* HERO — video bg, centered headline only                */
 /* ===================================================== */
 function HeroSlide({
-  t, active, products,
+  t, active,
 }: {
   t: (k: string) => string;
   active: boolean;
-  products: Product[];
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -171,7 +169,6 @@ function HeroSlide({
       data-section="hero"
       className="relative w-full overflow-hidden min-h-[100svh] lg:h-[100svh] lg:snap-start lg:snap-always bg-black"
     >
-      {/* Video background */}
       <video
         ref={videoRef}
         src="/chilon.mp4"
@@ -183,84 +180,24 @@ function HeroSlide({
         className="absolute inset-0 size-full object-cover"
       />
 
-      {/* Overlays for readability */}
-      <div className="absolute inset-0 bg-black/35" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/10 to-black/55" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/55" />
+      <div className="absolute inset-0 bg-black/45" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/15 to-black/65" />
 
-      {/* Decorative side glow accents — make the edges feel rich */}
-      <div className="pointer-events-none absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/3 size-[28rem] rounded-full bg-brand-500/15 blur-[120px]" />
+      <div className="pointer-events-none absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/3 size-[28rem] rounded-full bg-brand-500/10 blur-[120px]" />
       <div className="pointer-events-none absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/3 size-[24rem] rounded-full bg-brand-400/10 blur-[100px]" />
 
-      {/* Content — edge-to-edge full-width layout */}
-      <div className="relative z-10 min-h-[100svh] lg:h-full flex flex-col justify-center pt-24 lg:pt-20 pb-16 lg:pb-12 px-6 sm:px-10 lg:px-14 xl:px-20 2xl:px-28">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10 lg:gap-10 xl:gap-16 w-full">
-
-          {/* LEFT — text + CTAs + stats */}
-          <div className="order-2 lg:order-1 text-white lg:flex-1 lg:max-w-[640px]">
-            <span
-              data-hero-tag
-              className="inline-flex items-center gap-2 rounded-full bg-white/15 backdrop-blur border border-white/25 px-3.5 py-1.5 text-[11px] sm:text-sm font-medium text-white shadow-lg shadow-black/10"
-            >
-              <span className="size-1.5 rounded-full bg-brand-400" />
-              {t('hero.tag')}
-            </span>
-            <h1 className="display mt-5 sm:mt-7 text-[2.25rem] sm:text-5xl lg:text-[3.75rem] xl:text-7xl 2xl:text-[5.5rem] font-bold leading-[0.98] tracking-tight">
-              <span data-hero-line className="block">
-                {t('hero.title').split(' ').slice(0, Math.ceil(t('hero.title').split(' ').length / 2)).join(' ')}
-              </span>
-              <span data-hero-line className="block text-brand-400">
-                {t('hero.title').split(' ').slice(Math.ceil(t('hero.title').split(' ').length / 2)).join(' ')}
-              </span>
-            </h1>
-            <p data-hero-sub className="mt-4 sm:mt-6 text-sm sm:text-base lg:text-lg text-white/85 max-w-xl leading-relaxed">
-              {t('hero.subtitle')}
-            </p>
-            <div className="mt-6 sm:mt-8 flex flex-wrap items-center gap-2.5 sm:gap-3">
-              <Link href="/products" className="btn-primary shadow-xl shadow-brand-500/30" data-hero-cta>
-                {t('hero.cta.products')}
-                <Arrow />
-              </Link>
-              <Link
-                href="/contacts"
-                data-hero-cta
-                className="inline-flex items-center justify-center gap-2 rounded-full font-medium border border-white/30 bg-white/10 text-white backdrop-blur px-6 py-3 transition-all duration-300 hover:bg-white hover:text-ink-900"
-              >
-                {t('hero.cta.contact')}
-              </Link>
-            </div>
-
-            {/* Stats — minimalist divider style on desktop */}
-            <div className="mt-8 sm:mt-10 lg:mt-12 flex flex-wrap items-stretch gap-5 sm:gap-7 lg:gap-8">
-              {[
-                { v: '130+', k: 'home.stat.products' },
-                { v: '12',  k: 'home.stat.categories' },
-                { v: '15+', k: 'home.stat.years' },
-              ].map((s, i) => (
-                <div
-                  key={s.k}
-                  data-hero-stat
-                  className={`flex flex-col ${i > 0 ? 'lg:border-l lg:border-white/20 lg:pl-6 xl:pl-8' : ''}`}
-                >
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
-                    {s.v}
-                  </div>
-                  <div className="text-[11px] sm:text-xs lg:text-sm text-white/70 mt-1 uppercase tracking-wider leading-tight">
-                    {t(s.k)}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* RIGHT — product carousel anchored to right edge */}
-          <div
-            data-hero-carousel
-            className="order-1 lg:order-2 shrink-0 flex justify-center lg:justify-end self-center"
-          >
-            <ProductCarousel products={products} t={t} />
-          </div>
-        </div>
+      <div className="relative z-10 min-h-[100svh] lg:h-full flex flex-col items-center justify-center text-center px-6 sm:px-10 lg:px-14">
+        <h1 className="display text-white text-[2rem] sm:text-5xl lg:text-[3.75rem] xl:text-7xl 2xl:text-[5.5rem] font-bold leading-[1.05] tracking-tight max-w-5xl">
+          <span data-hero-line className="block">
+            {t('hero.title')}
+          </span>
+        </h1>
+        <p
+          data-hero-sub
+          className="mt-5 sm:mt-7 text-base sm:text-lg lg:text-xl text-white/85 max-w-2xl leading-relaxed"
+        >
+          {t('hero.subtitle')}
+        </p>
       </div>
 
       <ScrollHint light />
@@ -269,96 +206,14 @@ function HeroSlide({
 }
 
 /* ===================================================== */
-/* Product Carousel (auto-rotate)                         */
+/* Slide 2: CATEGORIES                                    */
 /* ===================================================== */
-function ProductCarousel({
-  products, t,
-}: { products: Product[]; t: (k: string) => string }) {
-  const [idx, setIdx] = useState(0);
-  const slice = products.slice(0, 6);
-
-  useEffect(() => {
-    if (slice.length < 2) return;
-    const id = setInterval(() => setIdx((i) => (i + 1) % slice.length), 3800);
-    return () => clearInterval(id);
-  }, [slice.length]);
-
-  if (slice.length === 0) {
-    return (
-      <div className="w-[15rem] sm:w-[18rem] lg:w-[22rem] aspect-[3/4] rounded-[2rem] bg-white/10 backdrop-blur animate-pulse" />
-    );
-  }
-
-  const current = slice[idx];
-  const img = productImage(current);
-
-  return (
-    <Link
-      href={`/products/${current.id}`}
-      className="group relative block w-[15rem] sm:w-[18rem] lg:w-[22rem] aspect-[3/4] rounded-[2rem] overflow-hidden bg-white/95 backdrop-blur border border-white/40 shadow-2xl shadow-black/30 hover:shadow-brand-500/30 hover:-translate-y-1 transition-all duration-500"
-    >
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-50 via-white to-brand-100" />
-      <div className="absolute -top-16 -right-12 size-44 rounded-full bg-brand-300/30 blur-2xl" />
-
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={current.id}
-          initial={{ opacity: 0, y: 30, scale: 0.96 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: -20, scale: 0.96 }}
-          transition={{ duration: 0.6, ease: [0.21, 1, 0.36, 1] }}
-          className="absolute inset-0"
-        >
-          {current.code && (
-            <span className="absolute top-3 right-3 sm:top-4 sm:right-4 rounded-full bg-white/95 backdrop-blur px-2.5 py-1 text-[10px] sm:text-xs font-medium text-ink-700 shadow z-10">
-              {current.code}
-            </span>
-          )}
-          <div className="absolute inset-x-0 top-6 sm:top-8 bottom-[34%] grid place-items-center px-5">
-            <img
-              src={img}
-              alt={current.name}
-              className="max-h-full max-w-full object-contain drop-shadow-xl transition-transform duration-700 group-hover:scale-110"
-            />
-          </div>
-          <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5 bg-gradient-to-t from-white via-white/95 to-transparent pt-10">
-            <div className="text-[10px] sm:text-xs font-medium uppercase tracking-wider text-brand-600">
-              {t('hero.tag')}
-            </div>
-            <h3 className="mt-1 text-sm sm:text-base lg:text-lg font-semibold text-ink-900 line-clamp-2 group-hover:text-brand-700 transition-colors">
-              {current.name}
-            </h3>
-            <div className="mt-2 flex items-center gap-1 text-xs sm:text-sm font-medium text-brand-600">
-              <span>{t('news.readMore')}</span>
-              <Arrow />
-            </div>
-          </div>
-        </motion.div>
-      </AnimatePresence>
-
-      <div className="absolute top-3 left-3 sm:top-4 sm:left-4 flex gap-1.5 z-10">
-        {slice.map((_, i) => (
-          <span
-            key={i}
-            className={`block h-1 rounded-full transition-all duration-500 ${
-              i === idx ? 'w-6 bg-brand-500' : 'w-1 bg-ink-300'
-            }`}
-          />
-        ))}
-      </div>
-    </Link>
-  );
-}
-
-/* ===================================================== */
-/* Slide 2: PRODUCTS                                      */
-/* ===================================================== */
-function ProductsSlide({
-  t, products,
-}: { t: (k: string) => string; products: Product[] }) {
+function CategoriesSlide({
+  t, lang, categories,
+}: { t: (k: string) => string; lang: 'uz' | 'en' | 'ru'; categories: Category[] }) {
   return (
     <SlideShell
-      sectionKey="products"
+      sectionKey="categories"
       bgClass="bg-gradient-to-b from-[#fafdf8] to-white"
       pattern={
         <>
@@ -378,17 +233,17 @@ function ProductsSlide({
           <div className="max-w-2xl">
             <RevealOnView>
               <span className="inline-flex rounded-full bg-brand-50 px-3.5 py-1.5 text-[11px] sm:text-sm font-medium text-brand-700">
-                02 — {t('hero.tag')}
+                02 — {t('categories.subtitle')}
               </span>
             </RevealOnView>
             <RevealOnView delay={0.08}>
               <h2 className="display mt-3 text-[1.75rem] sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.1]">
-                {t('products.title')}
+                {t('categories.title')}
               </h2>
             </RevealOnView>
             <RevealOnView delay={0.14}>
               <p className="mt-2.5 text-sm sm:text-base text-ink-700 max-w-xl">
-                {t('products.subtitle')}
+                {t('categories.subtitle')}
               </p>
             </RevealOnView>
           </div>
@@ -401,9 +256,9 @@ function ProductsSlide({
         </div>
 
         <RevealOnView delay={0.22}>
-          <div className="mt-7 sm:mt-9 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-            {products.slice(0, 6).map((p, i) => (
-              <ModernProductCard key={p.id} product={p} idx={i} t={t} />
+          <div className="mt-7 sm:mt-9 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+            {categories.slice(0, 6).map((c, i) => (
+              <CategoryCard key={c.id} category={c} idx={i} lang={lang} t={t} />
             ))}
           </div>
         </RevealOnView>
@@ -413,36 +268,39 @@ function ProductsSlide({
 }
 
 /* ===================================================== */
-/* Modern product card                                    */
+/* Category card                                          */
 /* ===================================================== */
-function ModernProductCard({
-  product, idx, t,
-}: { product: Product; idx: number; t: (k: string) => string }) {
-  const img = productImage(product, idx);
+function CategoryCard({
+  category, idx, lang, t,
+}: { category: Category; idx: number; lang: 'uz' | 'en' | 'ru'; t: (k: string) => string }) {
+  const img = productImage({ id: category.id, name: pickLang(category.name as any, lang), image: category.image }, idx);
+  const name = pickLang(category.name as any, lang);
+  const desc = pickLang(category.description as any, lang);
+
   return (
     <Link
-      href={`/products/${product.id}`}
-      className="group relative block aspect-[3/4] rounded-3xl overflow-hidden bg-white border border-ink-100 hover:border-brand-200 hover:shadow-2xl hover:shadow-brand-500/15 hover:-translate-y-1 transition-all duration-500"
+      href={`/products?category=${category.id}`}
+      className="group relative flex items-center gap-4 sm:gap-5 p-4 sm:p-5 rounded-3xl bg-white border border-ink-100 hover:border-brand-300 hover:shadow-2xl hover:shadow-brand-500/15 hover:-translate-y-1 transition-all duration-500 overflow-hidden"
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-50/60 via-white to-brand-100/40" />
-      {product.code && (
-        <span className="absolute top-2.5 right-2.5 z-10 rounded-full bg-white/95 backdrop-blur px-2 py-0.5 text-[9px] sm:text-[10px] font-medium text-ink-700 shadow-sm">
-          {product.code}
-        </span>
-      )}
-      <div className="absolute inset-x-0 top-4 bottom-[32%] grid place-items-center px-3">
+      <div className="pointer-events-none absolute -top-12 -right-10 size-40 rounded-full bg-brand-100/50 blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      <div className="relative size-20 sm:size-24 shrink-0 rounded-2xl bg-gradient-to-br from-brand-50 via-white to-brand-100/60 border border-ink-100 grid place-items-center p-2">
         <img
           src={img}
-          alt={product.name}
-          className="max-h-full max-w-full object-contain drop-shadow-md transition-transform duration-700 group-hover:scale-110"
+          alt={name}
+          className="max-h-full max-w-full object-contain drop-shadow-sm transition-transform duration-500 group-hover:scale-110"
         />
       </div>
-      <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-white via-white/95 to-transparent pt-8">
-        <h3 className="text-[11px] sm:text-xs font-semibold text-ink-900 line-clamp-2 group-hover:text-brand-700 transition-colors leading-tight">
-          {product.name}
+      <div className="relative min-w-0 flex-1">
+        <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-ink-900 group-hover:text-brand-700 transition-colors leading-snug line-clamp-2">
+          {name}
         </h3>
-        <div className="mt-1.5 flex items-center gap-1 text-[10px] sm:text-xs font-medium text-brand-600 opacity-0 group-hover:opacity-100 -translate-x-1 group-hover:translate-x-0 transition-all duration-300">
-          <span>{t('news.readMore')}</span>
+        {desc && (
+          <p className="mt-1 text-xs sm:text-sm text-ink-500 line-clamp-2">
+            {desc}
+          </p>
+        )}
+        <div className="mt-2 inline-flex items-center gap-1 text-xs sm:text-sm font-medium text-brand-600">
+          <span>{t('categories.view')}</span>
           <Arrow />
         </div>
       </div>
@@ -655,7 +513,7 @@ function SlideIndicator({
 function SlideLabel({ activeIdx, t }: { activeIdx: number; t: (k: string) => string }) {
   const labels: Record<SectionKey, string> = {
     hero: t('nav.home'),
-    products: t('nav.products'),
+    categories: t('categories.title'),
     partners: t('nav.partners'),
     cta: t('nav.news'),
   };
