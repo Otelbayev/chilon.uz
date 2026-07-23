@@ -37,7 +37,7 @@ export default function CtaSlide({ news }: Props) {
         <header className="max-w-2xl">
           <RevealOnView>
             <span className="inline-flex rounded-full bg-brand-50 px-3.5 py-1.5 text-[11px] sm:text-sm font-medium text-brand-700">
-              04 — {t("news.subtitle")}
+              05 — {t("news.subtitle")}
             </span>
           </RevealOnView>
           <RevealOnView delay={0.08}>

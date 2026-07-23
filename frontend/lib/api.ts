@@ -118,6 +118,15 @@ export function imageUrl(path?: string | null): string {
 /* don't have a usable image of their own.                            */
 /* ------------------------------------------------------------------ */
 
+/**
+ * Only clean packaging ("тара") renders belong here.
+ *
+ * Client brief (15.07.26): "картинки мы ставим качественно изображения тар,
+ * без натурального продукта" — stock photos of the grease itself, or of it
+ * being applied by hand, must never reach a product card. When a new tara
+ * render lands in `public/products/`, add it here (and to SPECIFIC below);
+ * that's the only place image selection happens.
+ */
 export const PRODUCT_IMAGES = [
   '/products/gasoline-motor-oil.webp',
   '/products/diesel-motor-oil.webp',
@@ -126,6 +135,12 @@ export const PRODUCT_IMAGES = [
   '/products/railway-grease.webp',
   '/products/tsiatim-201.webp',
   '/products/tsiatim-221.webp',
+];
+
+/** Subset used by the hero showcase — canisters only, no buckets or tins. */
+export const CANISTER_IMAGES = [
+  '/products/gasoline-motor-oil.webp',
+  '/products/diesel-motor-oil.webp',
 ];
 
 const SPECIFIC: Array<[RegExp, string]> = [

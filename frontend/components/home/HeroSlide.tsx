@@ -1,69 +1,90 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import Link from "next/link";
 import { useLang } from "@/lib/i18n";
+import ArrowRight from "@/components/icons/ArrowRight";
 import ScrollHint from "./ScrollHint";
+import SeasonsBackdrop from "./hero/SeasonsBackdrop";
+import HeroVideo from "./hero/HeroVideo";
+import CanisterShowcase from "./hero/CanisterShowcase";
 
 type Props = {
-  /** True while the hero is the active slide — used to play/pause the video. */
+  /** True while the hero is the active slide — lets the video pause off-screen. */
   active: boolean;
 };
 
 /**
- * Full-bleed hero with a background video and centered headline + subtitle.
- * Text content comes from i18n keys `hero.title` and `hero.subtitle`.
+ * Hero — three layers that are separated in *space*, not stacked on top of
+ * each other (client brief 15.07.26: "не перегружено... текст ничего не
+ * перекрывал", "канистра не должна загораживаться"):
+ *
+ *   z-0   SeasonsBackdrop  — vector scene, poster frame + reduced-motion view
+ *   z-0   HeroVideo        — the four-season footage, fades in over the vector
+ *   z-10  copy column      — tag, headline, subtitle, CTAs (left)
+ *   z-10  canister column  — CanisterShowcase (right, its own grid cell)
+ *
+ * The two content columns are siblings in a grid, so nothing can ever
+ * overlap the product shot.
  */
 export default function HeroSlide({ active }: Props) {
   const { t } = useLang();
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const v = videoRef.current;
-    if (!v) return;
-    if (active) v.play().catch(() => {});
-    else v.pause();
-  }, [active]);
 
   return (
     <section
       data-snap-section
       data-section="hero"
-      className="relative w-full overflow-hidden min-h-[100svh] lg:h-[100svh] lg:snap-start lg:snap-always bg-black"
+      className="relative w-full overflow-hidden min-h-[100svh] lg:h-[100svh] lg:snap-start lg:snap-always bg-white"
     >
-      <video
-        ref={videoRef}
-        src="/chilon.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        className="absolute inset-0 size-full object-cover"
-      />
+      <SeasonsBackdrop />
+      <HeroVideo active={active} />
 
-      {/* Readability overlays */}
-      <div className="absolute inset-0 bg-black/45" />
-      <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/15 to-black/65" />
+      <div className="relative z-10 min-h-[100svh] lg:h-full flex items-center">
+        <div className="container-x w-full grid gap-10 lg:gap-12 pt-24 pb-24 lg:py-0 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:items-center">
+          {/* ---- Copy column ---- */}
+          <div className="max-w-xl text-center lg:text-left">
+            <span
+              data-hero-tag
+              className="inline-flex rounded-full bg-brand-50 px-3.5 py-1.5 text-[11px] sm:text-sm font-medium text-brand-700"
+            >
+              {t("hero.tag")}
+            </span>
 
-      {/* Soft glow accents */}
-      <div className="pointer-events-none absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/3 size-[28rem] rounded-full bg-brand-500/10 blur-[120px]" />
-      <div className="pointer-events-none absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/3 size-[24rem] rounded-full bg-brand-400/10 blur-[100px]" />
+            <h1 className="display mt-4 text-ink-900 text-[2rem] sm:text-5xl lg:text-[3.25rem] xl:text-6xl font-bold leading-[1.06] tracking-tight">
+              <span data-hero-line className="block">
+                {t("hero.title")}
+              </span>
+            </h1>
 
-      <div className="relative z-10 min-h-[100svh] lg:h-full flex flex-col items-center justify-center text-center px-6 sm:px-10 lg:px-14">
-        <h1 className="display text-white text-[2rem] sm:text-5xl lg:text-[3.75rem] xl:text-7xl 2xl:text-[5.5rem] font-bold leading-[1.05] tracking-tight max-w-5xl">
-          <span data-hero-line className="block">
-            {t("hero.title")}
-          </span>
-        </h1>
-        <p
-          data-hero-sub
-          className="mt-5 sm:mt-7 text-base sm:text-lg lg:text-xl text-white/85 max-w-2xl leading-relaxed"
-        >
-          {t("hero.subtitle")}
-        </p>
+            <p
+              data-hero-sub
+              className="mt-4 sm:mt-5 text-base sm:text-lg text-ink-700 leading-relaxed"
+            >
+              {t("hero.subtitle")}
+            </p>
+
+            <div
+              data-hero-cta
+              className="mt-7 sm:mt-8 flex flex-wrap gap-3 justify-center lg:justify-start"
+            >
+              <Link href="/products" className="btn-primary">
+                {t("hero.cta.products")}
+                <ArrowRight />
+              </Link>
+              <Link href="/contacts" className="btn-ghost">
+                {t("hero.cta.contact")}
+              </Link>
+            </div>
+          </div>
+
+          {/* ---- Canister column — kept clear of every other element ---- */}
+          <div className="relative flex justify-center lg:justify-end">
+            <CanisterShowcase />
+          </div>
+        </div>
       </div>
 
-      <ScrollHint light />
+      {/* Left-aligned so it stays outside the canister column. */}
+      <ScrollHint className="hidden lg:flex bottom-6 left-12" />
     </section>
   );
 }

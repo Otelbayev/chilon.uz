@@ -478,8 +478,9 @@ function ShopGridCard({
       href={`/products/${product.id}`}
       className="group relative flex flex-col overflow-hidden rounded-2xl bg-white border border-ink-100 hover:border-brand-200 hover:shadow-xl hover:shadow-brand-500/10 hover:-translate-y-1 transition-all duration-500"
     >
-      {/* Image area */}
-      <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-brand-50/50 via-white to-brand-100/30">
+      {/* Image area — flat white so the packaging render reads as a clean
+          studio shot rather than sitting on a tinted wash. */}
+      <div className="relative aspect-square overflow-hidden bg-white">
         {product.code && (
           <span className="absolute top-2.5 left-2.5 z-10 rounded-md bg-ink-900/90 px-1.5 py-0.5 text-[9px] font-semibold text-white tracking-wide">
             {product.code}
@@ -560,7 +561,7 @@ function ShopListCard({
       className="group flex gap-4 sm:gap-5 overflow-hidden rounded-2xl bg-white border border-ink-100 hover:border-brand-200 hover:shadow-xl hover:shadow-brand-500/10 transition-all duration-500 p-3 sm:p-4"
     >
       {/* Image */}
-      <div className="shrink-0 relative w-24 sm:w-32 lg:w-40 aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-brand-50/60 via-white to-brand-100/40">
+      <div className="shrink-0 relative w-24 sm:w-32 lg:w-40 aspect-square rounded-xl overflow-hidden bg-white border border-ink-100">
         <div className="absolute inset-0 grid place-items-center p-3">
           <img
             src={img}

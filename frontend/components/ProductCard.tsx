@@ -16,7 +16,7 @@ export default function ProductCard({ product, idx }: { product: Product; idx?: 
       className="group relative flex flex-col overflow-hidden rounded-3xl bg-white border border-ink-100 transition-all duration-500 hover:border-brand-200 hover:shadow-2xl hover:shadow-brand-500/15 hover:-translate-y-1"
     >
       {/* Image area */}
-      <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-brand-50/60 via-white to-brand-100/40">
+      <div className="relative aspect-square overflow-hidden bg-white">
         {product.code && (
           <span className="absolute top-3 right-3 z-10 rounded-full bg-white/95 backdrop-blur px-2.5 py-1 text-[10px] font-medium text-ink-700 shadow-sm">
             {product.code}

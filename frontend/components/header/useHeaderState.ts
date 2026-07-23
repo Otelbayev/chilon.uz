@@ -30,7 +30,8 @@ export function useHeaderState() {
     };
   }, []);
 
-  // White text over the hero video when we're parked on the hero
-  const light = onHero && !scrolled;
+  // The hero used to be a dark video, which needed white header text. It is
+  // now a light white/green vector scene, so the header always uses dark ink.
+  const light = false;
   return { scrolled, onHero, light };
 }

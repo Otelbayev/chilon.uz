@@ -114,6 +114,35 @@ html.lenis, html.lenis body { height: auto; }
 /* Hide scrollbar in home snap container */
 .snap-y::-webkit-scrollbar { width: 0; height: 0; }
 
+/* ===== Hero — four-season vector backdrop ===== */
+/* Four groups share one 24s loop, each visible for ~6s (delays 0/6/12/18s). */
+@keyframes seasonCycle {
+  0%,  100% { opacity: 0; }
+  4%,  21%  { opacity: 1; }
+  25%       { opacity: 0; }
+}
+.season-layer {
+  opacity: 0;
+  animation: seasonCycle 24s linear infinite;
+}
+.season-layer[data-season="spring"] { animation-delay:  0s; }
+.season-layer[data-season="summer"] { animation-delay:  6s; }
+.season-layer[data-season="autumn"] { animation-delay: 12s; }
+.season-layer[data-season="winter"] { animation-delay: 18s; }
+
+/* Very slow horizontal drift so the flat scene doesn't feel frozen. */
+@keyframes heroDrift {
+  from { transform: translate3d(-1.5%, 0, 0) scale(1.06); }
+  to   { transform: translate3d( 1.5%, 0, 0) scale(1.06); }
+}
+.hero-drift { animation: heroDrift 32s ease-in-out infinite alternate; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-drift { animation: none; transform: none; }
+  .season-layer { animation: none; opacity: 0; }
+  .season-layer[data-season="spring"] { opacity: 1; }
+}
+
 /* ===== Leaflet map — Uzbekistan dealer pins ===== */
 .uz-marker { background: transparent !important; border: none !important; }
 

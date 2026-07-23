@@ -7,6 +7,7 @@ import CtaSlide from "./CtaSlide";
 import HeroSlide from "./HeroSlide";
 import PartnersSlide from "./PartnersSlide";
 import SlideIndicator from "./SlideIndicator";
+import StatsSlide from "./StatsSlide";
 import SlideLabel from "./SlideLabel";
 import { SECTIONS } from "./sections";
 import { useActiveSection } from "./hooks/useActiveSection";
@@ -14,8 +15,8 @@ import { useHeroIntro } from "./hooks/useHeroIntro";
 import { useHomeData } from "./hooks/useHomeData";
 
 /**
- * The home page is a snap-scrolling viewport that contains four slides
- * (hero, categories, partners, news/CTA) followed by the global Footer.
+ * The home page is a snap-scrolling viewport that contains five slides
+ * (hero, categories, stats, partners, news/CTA) followed by the global Footer.
  *
  * Most of the cleverness lives in the hooks:
  *   - useHomeData       fetches everything the slides need
@@ -48,6 +49,7 @@ export default function HomePage() {
       >
         <HeroSlide active={activeIdx === 0} />
         <CategoriesSlide categories={categories} />
+        <StatsSlide />
         <PartnersSlide partners={partners} />
         <CtaSlide news={news} />
 

@@ -64,14 +64,14 @@ export default function Header() {
 /* ---------- inline triggers (small enough to keep here) ---------- */
 
 function headerClasses({ scrolled, light }: { scrolled: boolean; light: boolean }) {
-  // Three visual states:
-  //   scrolled        -> frosted glass with hairline border
-  //   on hero (light) -> dark gradient on transparent
-  //   otherwise       -> transparent
+  // Two visual states:
+  //   scrolled  -> frosted glass with hairline border
+  //   otherwise -> soft white wash so the nav stays legible over the hero
+  //                graphic without drawing a hard edge
   const base = "fixed inset-x-0 top-0 z-40 transition-all duration-300";
   if (scrolled) return `${base} glass border-b border-ink-100`;
   if (light) return `${base} bg-linear-to-b from-black/40 to-transparent`;
-  return `${base} bg-transparent`;
+  return `${base} bg-linear-to-b from-white/85 to-transparent`;
 }
 
 function SearchTrigger({ light, onClick }: { light: boolean; onClick: () => void }) {

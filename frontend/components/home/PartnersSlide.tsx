@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { useState } from "react";
+import { imageUrl } from "@/lib/api";
 import { useLang } from "@/lib/i18n";
 import type { Partner } from "@/lib/types";
 import ArrowRight from "@/components/icons/ArrowRight";
@@ -35,7 +37,7 @@ export default function PartnersSlide({ partners }: Props) {
         <header className="max-w-2xl">
           <RevealOnView>
             <span className="inline-flex rounded-full bg-brand-50 px-3.5 py-1.5 text-[11px] sm:text-sm font-medium text-brand-700">
-              03 — {t("partners.subtitle")}
+              04 — {t("partners.subtitle")}
             </span>
           </RevealOnView>
           <RevealOnView delay={0.08}>
@@ -66,12 +68,30 @@ export default function PartnersSlide({ partners }: Props) {
   );
 }
 
+/**
+ * Renders the partner's real logo, falling back to the name when the file is
+ * missing or fails to load (client asked for icons, not text placeholders).
+ */
 function PartnerLogo({ partner }: { partner: Partner }) {
+  const src = imageUrl(partner.logo);
+  const [failed, setFailed] = useState(false);
+  const showImage = !!src && !failed;
+
   return (
     <div className="group aspect-[3/2] grid place-items-center rounded-2xl border border-ink-100 bg-white/90 backdrop-blur p-4 hover:border-brand-300 hover:shadow-lg hover:-translate-y-0.5 transition-all duration-500">
-      <span className="text-[10px] sm:text-xs font-semibold text-ink-500 group-hover:text-brand-600 text-center line-clamp-2 transition-colors">
-        {partner.name}
-      </span>
+      {showImage ? (
+        <img
+          src={src}
+          alt={partner.name}
+          loading="lazy"
+          onError={() => setFailed(true)}
+          className="max-h-full max-w-full object-contain grayscale opacity-75 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+        />
+      ) : (
+        <span className="text-[10px] sm:text-xs font-semibold text-ink-500 group-hover:text-brand-600 text-center line-clamp-2 transition-colors">
+          {partner.name}
+        </span>
+      )}
     </div>
   );
 }
